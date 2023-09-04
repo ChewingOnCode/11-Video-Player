@@ -18,7 +18,7 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
-.fas {
+.fa-solid {
   color: var(--font-color);
   font-size: 35px;
 }
@@ -94,12 +94,20 @@ video {
 
 /* Progress Bar */
 .progress-range {
+  height: 8px;
+  width: calc(100% - 30px);
+  background: rgba(200, 200, 200, 0.5);
   margin: auto;
   border-radius: 10px;
   position: absolute;
   left: 15px;
   top: 15px;
   cursor: pointer;
+  transition: height 0.1s ease-in-out;
+  -webkit-transition: height 0.1s ease-in-out;
+  -moz-transition: height 0.1s ease-in-out;
+  -ms-transition: height 0.1s ease-in-out;
+  -o-transition: height 0.1s ease-in-out;
 }
 
 .progress-bar {
@@ -173,7 +181,16 @@ video {
   margin-right: 15px;
 }
 
+select,
+option {
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+}
 select {
+  background: transparent;
   color: var(--font-color);
   border: none;
   font-size: 18px;
