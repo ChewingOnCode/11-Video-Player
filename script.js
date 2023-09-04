@@ -11,6 +11,25 @@ const fullscreenBtn = document.querySelector(".fullscreen");
 
 // Play & Pause ----------------------------------- //
 
+//  Show Play Icon
+function showPlayIcon() {
+  playBtn.classList.replace("fa-pause", "fa-play");
+  playBtn.setAttribute("title", "Play");
+}
+function togglePlay() {
+  if (video.paused) {
+    video.play();
+    playBtn.classList.replace("fa-play", "fa-pause");
+    playBtn.setAttribute("title", "Pause");
+  } else {
+    video.pause();
+    showPlayIcon();
+  }
+}
+
+// On video end show play icon
+video.addEventListener("ended", showPlayIcon);
+
 // Progress Bar ---------------------------------- //
 
 // Volume Controls --------------------------- //
@@ -18,3 +37,7 @@ const fullscreenBtn = document.querySelector(".fullscreen");
 // Change Playback Speed -------------------- //
 
 // Fullscreen ------------------------------- //
+
+// Event Listener ------------------------------- //
+playBtn.addEventListener("click", togglePlay);
+video.addEventListener("click", togglePlay);
