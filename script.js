@@ -73,7 +73,7 @@ function changeVolume(e) {
   volumeBar.style.width = `${volume * 100}%`;
   video.volume = volume;
 
-  console.log(volume);
+//   console.log(volume);
   //   Change Icon depending on volume
   if (volume > 0.7) {
     volumeIcon.classList.remove("fa-solid", "fa-volume-low", "fa-volume-off");
@@ -82,7 +82,7 @@ function changeVolume(e) {
     volumeIcon.classList.remove("fa-solid", "fa-volume-high");
     volumeIcon.classList.add("fa-solid", "fa-volume-low");
   } else if (volume === 0) {
-    volumeIcon.classList.remove("fa-solid", "fa-volume-low", "fa-volume-high");
+    volumeIcon.classList.remove("fa-solid", "fa-volume-low");
     volumeIcon.classList.add("fa-solid", "fa-volume-off");
   }
   lastVolume = volume;
@@ -90,13 +90,18 @@ function changeVolume(e) {
 
 // Toggle Mute
 function toggleMute() {
+  volumeIcon.classList = "";
   if (video.volume) {
-    lastVolume = video - volume;
+    lastVolume = video.volume;
     video.volume = 0;
     volumeBar.style.width = 0;
+    volumeIcon.classList.add("fa-solid", "fa-volume-xmark");
+    volumeIcon.setAttribute("title", "Unmute");
   } else {
     video.volume = lastVolume;
     volumeBar.style.width = `${lastVolume * 100}%`;
+    volumeIcon.classList.add("fa-solid", "fa-volume-high");
+    volumeIcon.setAttribute("title", "Mute");
   }
 }
 // Change Playback Speed -------------------- //
